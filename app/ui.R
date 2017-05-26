@@ -15,9 +15,9 @@ shinyUI(fluidPage(
       helpText("Default max. file size is 5MB"),
       tags$hr(),
       # downloadButton('downloadData', 'Download'),
-      h5(helpText("Select the read.table parameters below")),
-      checkboxInput(inputId = 'header', label = 'Header', value = TRUE),
-      checkboxInput(inputId = "stringAsFactors", "stringAsFactors", value=TRUE),
+      h5(helpText("Select read table parameters below")),
+      # checkboxInput(inputId = 'header', label = 'Header', value = TRUE),
+      #checkboxInput(inputId = "stringAsFactors", "stringAsFactors", value=TRUE),
       checkboxInput(inputId = "na.rm", "Remove NA's", value = TRUE),
       br(),
       radioButtons(inputId = 'sep', label = 'Separator', choices = c(Comma=',',Semicolon=';',Tab='\t', Space='', caret='^'), selected = ',')

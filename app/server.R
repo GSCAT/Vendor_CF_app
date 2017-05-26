@@ -20,9 +20,12 @@ shinyServer(function(input,output){
     file1 <- input$file
     if(is.null(file1)){return()} 
     
-    read.table(file=file1$datapath, sep=input$sep, header = input$header, 
-               stringsAsFactors = input$stringAsFactors, quote = "\"", 
-               check.names = FALSE, na.strings = c("", "NA"))
+
+    # read.table(file=file1$datapath, sep=input$sep, header = input$header, 
+    #            stringsAsFactors = input$stringAsFactors, quote = "\"", 
+    #            check.names = FALSE, na.strings = c("", "NA"))
+  # Change this to read_delim
+    read_delim(file = file1$datapath, delim = input$sep, na = c("", "NA"))
     
   })
   
