@@ -4,6 +4,7 @@ library(tidyr)
 library(lubridate)
 library(readr)
 library(shinythemes)
+library(skimr)
 
 # use the below options code if you wish to increase the file input limit, in this example file input limit is increased from 5MB to 9MB
 # options(shiny.maxRequestSize = 9*1024^2)
@@ -50,7 +51,7 @@ shinyServer(function(input,output){
   # this reactive output contains the summary of the dataset and display the summary in table format
   output$sum <- renderTable({
     if(is.null(data())){return ()}
-    summary(data())
+    skim(data())
     
   })
   
@@ -85,7 +86,7 @@ shinyServer(function(input,output){
   # the following renderUI is used to dynamically generate the tabsets when the file is loaded. Until the file is loaded, app will not show the tabset.
   output$tb <- renderUI({
     if(is.null(data()))
-      h5("Powered by GSCAT: ", tags$img(src='insidepocket3.jpg', heigth=400, width=400))
+      h3("Powered by GSCAT: ", tags$img(src='insidepocket3.jpg', heigth=400, width=400))
     else
       tabsetPanel(tabPanel("Data", tableOutput("table")), 
                   tabPanel("About file", tableOutput("filedf")),
